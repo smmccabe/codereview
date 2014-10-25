@@ -25,7 +25,7 @@ for opt, arg in opts:
 		limit = arg
 
 count = 0
-dict = {};
+repos = {};
 limit = int(limit)
 
 print "searching repositories..."
@@ -47,12 +47,12 @@ for root, subdirs, files in os.walk(os.getcwd()):
 		loginfo = g.log('--author=' + author, '--format=%ar', '-n 1', '--all')
 		logkey = g.log('--author=' + author, '--format=%at', '-n 1', '--all')
 		if loginfo and logkey:
-			dict[logkey] = loginfo + '\t' + root
+			repos[logkey] = loginfo + '\t' + root
 			count += 1
 
 i = 0
-for key in sorted(dict, reverse=True):
-	print dict[key]
+for key in sorted(repos, reverse=True):
+	print repos[key]
 	i += 1
 	if limit and i > limit:
 		break
