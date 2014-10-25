@@ -7,8 +7,8 @@ Scans through any folders from the directory it is called from looking for git r
 
 ###Requirements###
 
-Python
-GitPython
+- Python
+- GitPython
 
 ####Ubuntu Instructions####
 
