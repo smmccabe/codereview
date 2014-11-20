@@ -43,9 +43,12 @@ for root, subdirs, files in os.walk(os.getcwd()):
 			description = True
 	
 	if head and config:
-		g = git.Git(root)
-		loginfo = g.log('--author=' + author, '--format=%ar', '-n 1', '--all')
-		logkey = g.log('--author=' + author, '--format=%at', '-n 1', '--all')
+		try:
+			g = git.Git(root)
+			loginfo = g.log('--author=' + author, '--format=%ar', '-n 1', '--all')
+			logkey = g.log('--author=' + author, '--format=%at', '-n 1', '--all')
+		except:
+			print 'Errored reading repository: ' + root
 		if loginfo and logkey:
 			repos[logkey] = loginfo + '\t' + root
 			count += 1
